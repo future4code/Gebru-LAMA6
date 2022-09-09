@@ -31,4 +31,16 @@ export class BandBusiness {
     )
 
   }
+
+  async getBandByNameOrId(input:string) {
+
+    const band = this.getConnection()
+        .select("*")
+        .from(BandDatabase.TABLE_NAME)
+        .where({id: input})
+        .orwhere({name: input})
+
+    return band;
+    
+  }
 }

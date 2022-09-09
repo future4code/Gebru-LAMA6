@@ -17,8 +17,28 @@ private static TABLE_NAME = "NOME_TABELA_BANDAS";
         
     }) 
     .into(BandDatabase.TABLE_NAME)  
-    } catch (error) {
+    } catch (error:any) {
         throw new Error(error.sqlMessage || error.message)
     }
  }
+ public async getBandById(id: string): Promise<Band> {
+    const result = await this.getConnection()
+      .select("*")
+      .from(BandDatabase.TABLE_NAME)
+      .where({ id });
+
+    return result[0] 
+  }
+
+  public async selectBandByName(name: string): Promise<Band> {
+    const result = await this.getConnection()
+      .select("*")
+      .from(BandDatabase.TABLE_NAME)
+      .where({ name });
+
+    return result[0] 
+  }
 }
+
+
+

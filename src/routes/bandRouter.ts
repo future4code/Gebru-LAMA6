@@ -1,8 +1,9 @@
 import express from "express";
 import { BandController } from "../controller/BandController";
 
- export const bandRouter = express.Router()
+export const bandRouter = express.Router();
 
- const bandController = new BandController()
+const bandController = new BandController();
 
- bandRouter.put("/register", bandController.registerBand)
+bandRouter.put("/register", bandController.registerBand);
+bandRouter.get("/get-band", bandController.getBandDetail);
